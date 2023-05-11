@@ -14,11 +14,7 @@ app.use(express.json())
 const mysql = require('mysql2');
 const connection = mysql.createConnection(process.env.DATABASE_URL)
 
-app.get('/get', function (req, res, next) {
-  console.log("hello")
-  res.send("hello")
-})
-
+//input data disease
 app.post('/disease', jsonParser, function (req, res, next) {
   connection.execute(
     'INSERT INTO Disese (D_Name, D_Symptom, D_Cause, D_Treatment, D_Treatmentys) VALUES (?,?,?,?,?)',
@@ -48,6 +44,7 @@ app.get('/tabledisease', function (req, res, next) {
   );
 })
 
+//delete disease
 app.post('/delete', jsonParser , function (req, res, next) {
   try {
     connection.execute(
@@ -66,6 +63,7 @@ app.post('/delete', jsonParser , function (req, res, next) {
   }
 })
 
+//get to update
 app.post('/getdisease', jsonParser , function (req, res, next) {
   try {
     connection.execute(
@@ -101,7 +99,9 @@ app.post('/editdisease', jsonParser , function (req, res, next) {
     res.json({status:"error",message: err})
   }
 })
+
 //about drug
+//get data drug
 app.post('/drug',jsonParser, function (req, res, next) {
   connection.execute(
    'INSERT INTO Drug (DI_Name, DI_Properties, DI_Type, DI_Price) VALUES (?,?,?,?)',
@@ -115,6 +115,7 @@ app.post('/drug',jsonParser, function (req, res, next) {
    }
  );
 })
+
 
 app.get('/tabledrug', function (req, res, next) {
   connection.query(
@@ -150,6 +151,7 @@ app.post('/deletedrug', jsonParser , function (req, res, next) {
   }
 })
 
+//get to update
 app.post('/getdrug', jsonParser , function (req, res, next) {
   try {
     connection.execute(
@@ -243,6 +245,7 @@ app.post('/authen', jsonParser, function(req, res, next){
 
 
 //about user
+//save data
 app.post('/record',jsonParser, function (req, res, next) {
   connection.execute(
    'INSERT INTO Record (Nickname, Birth, County, Canton, District, Congenitaldisease) VALUES (?,?,?,?,?,?)',
