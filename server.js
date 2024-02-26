@@ -12,7 +12,7 @@ require('dotenv').config()
 app.use(cors())
 app.use(express.json())
 const mysql = require('mysql2');
-const connection = mysql.createConnection(process.env.DATABASE_URL)
+const connection = mysql.createConnection('mysql://pjweb_airplanedo:85883d57a4751a12b387a547ea58fb37a9405111@eak.h.filess.io:3306/pjweb_airplanedo')
 
 //input data disease
 app.post('/disease', jsonParser, function (req, res, next) {
