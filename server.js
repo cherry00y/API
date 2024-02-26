@@ -30,7 +30,7 @@ app.post('/disease', jsonParser, function (req, res, next) {
 });
 
 
-app.post('/tabledisease', function (req, res, next) {
+app.get('/tabledisease', function (req, res, next) {
   connection.query(
     'SELECT * FROM `Disese`',
     function (err, results, fields) {
@@ -117,7 +117,7 @@ app.post('/drug',jsonParser, function (req, res, next) {
 })
 
 
-app.post('/tabledrug', function (req, res, next) {
+app.get('/tabledrug', function (req, res, next) {
   connection.query(
       'SELECT * FROM `Drug`',
       function (err, results, fields) {
